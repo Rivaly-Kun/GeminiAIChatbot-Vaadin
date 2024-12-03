@@ -1,0 +1,18 @@
+{
+  "productionMode": false,
+  "eagerServerLoad": false,
+  "npmFolder": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin",
+  "node.version": "v20.18.0",
+  "node.download.root": "https://nodejs.org/dist/",
+  "frontendFolder": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\src\\main\\frontend",
+  "connect.javaSourceFolder": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\src\\main\\java",
+  "javaResourceFolder": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\src\\main\\resources",
+  "connect.applicationProperties": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\src\\main\\resources\\application.properties",
+  "connect.openApiFile": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\target\\generated-resources\\openapi.json",
+  "project.frontend.generated": "C:\\Users\\gabri\\OneDrive\\Documents\\GeminiAIChatbot-Vaadin\\GeminiAIChatbot-Vaadin\\src\\main\\frontend\\generated",
+  "pnpm.enable": false,
+  "bun.enable": false,
+  "require.home.node": false,
+  "build.folder": "target",
+  "react.enable": true
+}

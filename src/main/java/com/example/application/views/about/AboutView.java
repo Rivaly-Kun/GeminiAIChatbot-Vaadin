@@ -1,36 +1,43 @@
 package com.example.application.views.about;
 
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Menu;
-import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
-import org.vaadin.lineawesome.LineAwesomeIconUrl;
+import com.example.service.GeminiService;
 
-@PageTitle("About")
-@Route("about")
-@Menu(order = 1, icon = LineAwesomeIconUrl.FILE)
+@Route("")
 public class AboutView extends VerticalLayout {
+    private final GeminiService geminiService = new GeminiService();
 
     public AboutView() {
-        setSpacing(false);
+        TextField inputField = new TextField("Enter your prompt");
+        TextArea responseTextArea = new TextArea("AI Response");
+        responseTextArea.setReadOnly(true);
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
-        add(img);
+        Button generateButton = new Button("Generate Response", event -> {
+            String prompt = inputField.getValue();
 
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+            if (prompt == null || prompt.trim().isEmpty()) {
+                responseTextArea.setValue("Please enter a valid prompt.");
+                return;
+            }
 
-        setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        getStyle().set("text-align", "center");
+            try {
+                String response = geminiService.getAIResponse(prompt);
+                responseTextArea.setValue(response);
+            } catch (IllegalArgumentException e) {
+                responseTextArea.setValue("Invalid input: " + e.getMessage());
+            } catch (Exception e) {
+                responseTextArea.setValue("An error occurred while communicating with the API.");
+                e.printStackTrace(); // Logs the error for debugging
+            }
+        });
+
+        add(inputField, generateButton, responseTextArea);
+        setAlignItems(Alignment.CENTER);
+        setSpacing(true);
+        setPadding(true);
     }
-
 }
